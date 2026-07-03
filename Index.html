@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mzimasi's E-Commerce Store</title>
+
+<style>
+
+ body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to bottom, #304869, #e5e7eb);
+}
+
+/* HEADER */
+header {
+  background: #304869;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.controls {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 6px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* PRODUCTS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* BUTTONS */
+button {
+  padding: 6px 10px;
+  background: #f4f4f8;;
+  color: rgb(11, 11, 11);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+button:hover {
+  background: #5a6fb5;
+}
+
+/* CART */
+.cart {
+  background: white;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* COMMENTS */
+.comments {
+  background: white;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#commentList {
+  margin-top: 10px;
+}
+
+.comment {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Mzimasi's e-Commerce Store</h1>
+  
+  <div id="greeting"></div>
+  <div id="cacheMsg"></div>
+
+  <div class="controls">
+    <input type="text" id="usernameInput" placeholder="Enter name">
+    <button onclick="saveUser()">Login</button>
+
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
+
+    <select id="fontSelector" onchange="changeFont()">
+      <option value="Arial">Arial</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Courier New">Courier New</option>
+    </select>
+  </div>
+</header>
+
+<main>
+
+<section class="products">
+
+  <div class="card">
+    <img src="iIiphone.jpg" alt="iPhone">
+    <h3>iPhone 17 Pro Max</h3>
+    <p>R21999</p>
+    <button onclick="addToCart('iPhone 17 Pro Max', 21999)">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="PS5.jpg" alt="PS5">
+    <h3>PS5 Digital Edition</h3>
+    <p>R12999</p>
+    <button onclick="addToCart('PS5 Digital Edition', 12999)">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="Dell.jpg" alt="Laptop">
+    <h3>Dell XPS 15 Edition</h3>
+    <p>R18999</p>
+    <button onclick="addToCart('Dell XPS 15 Edition', 18999)">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="AirPods.jpg" alt="AirPods">
+    <h3>Apple AirPods Pro</h3>
+    <p>R3999</p>
+    <button onclick="addToCart('Apple AirPods Pro', 3999)">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="samsung.jpg" alt="Samsung Tv">
+    <h3>Samsung Neo QLED 4K Smart TV Pro</h3>
+    <p>R9999</p>
+    <button onclick="addToCart('Samsung Neo QLED 4K Smart TV Pro', 9999)">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="Speaker_.jpg" alt="Speaker">
+    <h3>Quantum Bass Speaker</h3>
+    <p>R1299</p>
+    <button onclick="addToCart('Quantum Bass Speaker', 1299)">Add</button>
+  </div>
+
+</section>
+
+<section class="comments">
+  <h2>Product Reviews</h2>
+
+  <input type="text" id="commentName" placeholder="Your name">
+  <input type="text" id="commentText" placeholder="Write a comment">
+
+  <button onclick="addComment()">Post Comment</button>
+
+  <div id="commentList"></div>
+</section>
+
+<section class="cart">
+  <h2>Your Cart</h2>
+
+  <div id="cartList"></div>
+
+  <h3>Total: R<span id="cartTotal">0</span></h3>
+
+  <button onclick="clearCart()">Clear Cart</button>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
